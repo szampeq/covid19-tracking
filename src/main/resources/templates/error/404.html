@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1><span>404 Not Found</span></h1>
+        <span class="info-desc">
+        </span>
+    </div>
+</div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+</body>
+</html>

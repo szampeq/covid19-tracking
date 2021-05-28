@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+            <li><a href="/daybyday?country=Poland">day-by-day</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1>Covid-19 Statistics</h1>
+        <h4>The current situation of the Covid-19 pandemic in the world.</h4>
+        <img src="/graph.png" alt="rank" class="avatar"><br></br>
+    </div>
+</div>
+
+<div>
+    <h3>Select country to see graphs:</h3>
+    <select id="CountryInfo" name="CountryInfo" onChange="SelectRedirect()">
+        <option value="">Select country</option>
+        <option th:each="country: ${CountryInfo}"
+                th:value="${country.Slug}"
+                th:text="${country.Country}"/>
+    </select>
+
+</div>
+
+<div class="container">
+    <p></p>
+    <canvas id="line-chart" width="800" height="450"></canvas>
+</div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+
+<script>
+    function SelectRedirect(){
+        var country = document.getElementById("CountryInfo").value;
+        var url = "http://localhost:8080/daybyday?country=" + country;
+        window.location=url;
+    }
+</script>
+
+<script src="http://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script th:inline="javascript">
+    let data =/*[[${CountryData}]]*/ 'defaultanyvalue';
+
+    if (data.length === 0)
+        alert("No data for selected country!")
+
+    else {
+        let data7 = data.filter((e, i) => i % 7 === 7 - 1);
+        let days = data7.map(item => item.date.substring(0, 10));
+        let active = data7.map(item => item.active);
+        let confirmed = data7.map(item => item.confirmed);
+        let deaths = data7.map(item => item.deaths);
+        let recovered = data7.map(item => item.recovered);
+        let newconfirmed = data7.map(item => item.newCases);
+        let newdeaths = data7.map(item => item.newDeaths);
+
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: days,
+                datasets: [{
+                    data: active,
+                    label: "Active",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }, {
+                    data: confirmed,
+                    label: "Confirmed",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }, {
+                    data: deaths,
+                    label: "Deaths",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }, {
+                    data: recovered,
+                    label: "Recovered",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                }, {
+                    data: newconfirmed,
+                    label: "New Cases",
+                    borderColor: "#ec3f11",
+                    fill: false
+                }, {
+                    data: newdeaths,
+                    label: "New Deaths",
+                    borderColor: "#050201",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Statistics in ' + data[0].country
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

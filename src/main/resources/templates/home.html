@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+            <li><a href="/daybyday?country=Poland">day-by-day</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1><span>Covid App</span></h1>
+        <span class="info-desc">
+            The main goal of this app is to show current data related to Covid-19 pandemic.
+            Data comes from all over the world, their avaibility depends on whether a given country has submitted reports.
+            User can sort data according to differend catefories. Stay safe.
+        </span>
+    </div>
+</div>
+
+<div><h3>Worldwide since the start of the pandemic...</h3></div>
+
+<div class="wrapper-grid">
+    <div class="grid-content">
+        <div class="banner-icon"><i class="fas fa-virus"></i></div>
+        <h2 class="grid-title"><span th:text="${worldData.cases}"</span></h2>
+        <p class ="descritpion">registered cases</p>
+    </div>
+
+    <div class="grid-content">
+        <div class="banner-icon"><i class="fas fa-cross"></i></div>
+        <h2 class="grid-title"><span th:text="${worldData.deaths}"</span></h2>
+        <p class ="descritpion">registered deaths</p>
+    </div>
+
+    <div class="grid-content">
+        <div class="banner-icon"><i class="fas fa-plus-square"></i></div>
+        <h2 class="grid-title"><span th:text="${worldData.recovered}"</span></h2>
+        <p class ="descritpion">registered recovered</p>
+    </div>
+</div>
+
+    <div class="vaccine-info">
+        <h2>Sign up for a vaccination in Poland!</h2><br></br>
+        <a href="https://pacjent.erejestracja.ezdrowie.gov.pl/auth"><i class="fas fa-syringe"></i></a>
+        <h4>pacjent.gov.pl</h4>
+    </div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

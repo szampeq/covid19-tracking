@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+            <li><a href="/daybyday?country=Poland">day-by-day</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1>Covid-19 Statistics</h1>
+        <h4>The current situation of the Covid-19 pandemic in the world.</h4>
+        <img src="/rank.png" alt="rank" class="avatar"><br></br>
+    </div>
+</div>
+
+<div>
+    <h3>Select category:</h3>
+    <select id="covidData" name="covidData" onChange="SelectRedirect()">
+        <option value="">Select category</option>
+        <option value="cases">Total cases</option>
+        <option value="todaycases">Today cases</option>
+        <option value="casespmc">Cases per million citizens</option>
+        <option value="active">Active cases</option>
+        <option value="critical">Critical cases</option>
+        <option value="recovered">Recovered</option>
+        <option value="deaths">Total deaths</option>
+        <option value="deathstoday">Deaths today</option>
+        <option value="deathspmc">Deaths per million citizens</option>
+        <option value="tests">Total tests</option>
+        <option value="testspmm">Tests per million citizens</option>
+    </select>
+</div>
+
+<div class="container">
+    <h1>Covid-19 Statistics by (<span th:text="${parameter}"></span>)</h1>
+    <div class="ranking">
+        <table id="rank-table" class="ranking-table">
+            <thead>
+            <tr>
+                <th>Position</th>
+                <th>Country</th>
+                <th th:text="${parameter}"></th:text>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data,iterationStatus: ${covid}">
+                <td th:text="${iterationStatus.count}"></td>
+                <td th:text="${data[0]}"></td>
+                <td th:text="${data[1]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+
+<script>
+    function SelectRedirect(){
+        var sortBy = document.getElementById("covidData").value;
+        var url = "http://localhost:8080/rank?sortBy=" + sortBy;
+        window.location=url;
+    }
+</script>
+</body>
+</html>

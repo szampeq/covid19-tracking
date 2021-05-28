@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+            <li><a href="/daybyday?country=Poland">day-by-day</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1>Data from selected country</h1>
+        <h4>Select a country to view data on Covid-19 situation</h4>
+        <img src="/world.png" alt="covid" class="avatar"><br></br>
+    </div>
+</div>
+
+<div>
+    <h3>Select country:</h3>
+        <select id="covidData" name="covidData" onChange="SelectRedirect()">
+            <option value="">Select country</option>
+            <option th:each="country: ${covidData}"
+                    th:value="${country.Country}"
+                    th:text="${country.Country}"/>
+        </select>
+</div>
+
+<div><h3>Displaying data from: <span th:text="${countryData.Country}"></span></h3></div>
+
+<div class="container">
+
+    <div class="wrapper-grid">
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-virus"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.cases}"</span></h2>
+            <p class ="descritpion">total cases</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-city"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.casesPerOneMillion}"</span></h2>
+            <p class ="descritpion">cases per million citizens</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-lungs-virus"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.active}"</span></h2>
+            <p class ="descritpion">currently ill</p>
+        </div>
+    </div>
+
+    <div class="wrapper-grid">
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-shield-virus"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.recovered}"</span></h2>
+            <p class ="descritpion">total recovered</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-cross"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.deaths}"</span></h2>
+            <p class ="descritpion">total deaths</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-procedures"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.critical}"</span></h2>
+            <p class ="descritpion">in critical condition</p>
+        </div>
+    </div>
+
+    <div class="wrapper-grid">
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-heartbeat"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.todayCases}"</span></h2>
+            <p class ="descritpion">today cases</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-heart-broken"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.todayDeaths}"</span></h2>
+            <p class ="descritpion">today deaths</p>
+        </div>
+
+        <div class="grid-content">
+            <div class="banner-icon"><i class="fas fa-vials"></i></div>
+            <h2 class="grid-title"><span th:text="${countryData.totalTests}"</span></h2>
+            <p class ="descritpion">total tests</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+<script>
+    function SelectRedirect(){
+        var country = document.getElementById("covidData").value;
+        var url = "http://localhost:8080/country?country=" + country;
+        window.location=url;
+    }
+</script>
+</body>
+</html>

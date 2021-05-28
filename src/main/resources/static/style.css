@@ -1,0 +1,408 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+select {
+  text-align: center;
+  text-align-last:center;
+  font-size: 15px;
+  border-radius: 10px;
+  margin: auto;
+  display: block;
+  padding: 10px;
+}
+
+button{
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 0px 50px;
+  background-color: #FF4B2B;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: box-shadow .5s ease;
+}
+
+button:hover {
+  box-shadow: 0px 0px 5px #000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(29, 28, 28);
+    color: #fff;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-links li {
+  list-style: none;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  display: block;
+}
+
+.navbar-links li:hover {
+  background-color: #555;
+}
+
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+@media (max-width: 400px) {
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links li {
+    text-align: center;
+  }
+
+  .navbar-links li a {
+    padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+h3 {
+  text-align: center;
+}
+
+h6 {
+    font-size: 26px;
+    color: #0881f1;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    color: rgb(252, 8, 0);
+    text-decoration: none;
+}
+
+i {
+    font-size: 8em;
+    color: #0881f1;
+}
+
+i:hover {
+    color: rgb(42, 4, 146);
+  }
+
+.info-image {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  background-image: url("https://cdn.pixabay.com/photo/2020/03/08/23/23/coronavirus-4914026_1280.jpg");
+  background-size: cover;
+}
+
+.info-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+}
+
+.info-container h1 {
+  font-size: 40px;
+  letter-spacing: 0.2em;
+}
+
+.info-container h1 span {
+  border: 3px solid #fff;
+  padding: 6px 14px;
+}
+
+.info-desc {
+  margin: 20px;
+  display: block;
+  font-size: 15px;
+  text-shadow: 0 0 10px black;
+}
+
+.wrapper-grid {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  justify-content: center;
+}
+
+.grid-content {
+  overflow: hidden;
+  box-shadow: 0px 2px 8px 0px var(--clr-gray-light);
+  background-color: white;
+  text-align: center;
+  border-radius: 1rem;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.banner-icon {
+  width: 8rem;
+  margin-top: 4.5rem;
+  margin: auto;
+}
+
+.vaccine-info {
+  background-color: #fff;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.grid-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.description {
+  margin: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.registerBtn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.fa-file-alt {
+  color: rgb(240, 174, 6);
+}
+
+.fa-file-alt:hover {
+  color: rgb(240, 146, 6);
+}
+
+
+.footer{
+    background-color: #2b2b2b;
+    text-align: center;
+    padding: 10px;
+    color: #818181;
+    min-height: 50px;
+  }
+
+  .container {
+      text-align: center;
+      min-height: 500px;
+      padding: 30px;
+      background-color: #fff;
+  }
+
+.avatar {
+    vertical-align: middle;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0);
+  }
+
+  .avatar:hover {
+    cursor: pointer;
+    box-shadow: inset 0px 0px 20px rgb(253, 253, 253);
+  }
+
+.steps-table {
+  padding: 20px;
+  margin: auto;
+}
+
+.steps-table ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.steps-table li {
+  display: inline-block;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  min-width: 75px;
+  min-height: 75px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 15px;
+  margin-right: 10px;
+  list-style: none;
+  background-color: rgba(233, 231, 231, 0.534);
+}
+
+.steps-table li:hover {
+  background-color: rgba(250, 246, 246, 0.534);
+}
+
+.arrow {
+  margin: 10px;
+	border-radius: 50%;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 6px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+.arrow:active {
+transform: scale(0.95);
+}
+
+.arrow:focus {
+outline: none;
+}
+
+.steps-table i {
+  color: #fff;
+}
+
+.steps-table .date {
+  font-style: italic;
+}
+
+.steps-table .steps {
+  padding: 30px;
+  font-weight: bold;
+  color: #FF4B2B;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.ranking {
+  padding: 50px;
+}
+
+.ranking ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.ranking-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: auto;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.ranking-table thead tr {
+  background-color: #ff8300;
+  color: #ffffff;
+  text-align: center;
+}
+
+.ranking-table th,
+.ranking-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.ranking-table tbody tr:nth-of-type(even) {
+  background-color: #dddddd;
+}
+
+.ranking-table tbody tr:last-of-type {
+  border-bottom: 2px solid #FF4B2B;
+}
+
+.ranking-table tbody tr.active-row {
+  font-weight: bold;
+  color: #FF4B2B;
+}
+
+@media screen and (max-width: 600px) {
+  thead {
+    display: none;
+  }
+
+  td {
+    display: block;
+  }
+
+  td:first-child{
+    background-color: #FF4B2B;
+    color: #fff;
+    text-align: center;
+  }
+
+  td:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+}

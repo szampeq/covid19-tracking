@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <script src="https://kit.fontawesome.com/5ff0c880c6.js" crossorigin="anonymous"></script>
+    <title>Covid App</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand-title">Covid App</div>
+    <a href="#" class ="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+        <ul>
+            <li><a href="/">start</a></a></li>
+            <li><a href="/list">world</a></li>
+            <li><a href="/country?country=World">countries</a></li>
+            <li><a href="/rank?sortBy=cases">data</a></li>
+            <li><a href="/rank?sortBy=daybyday">day-by-day</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="info-image">
+    <div class="info-container">
+        <h1>Covid-19 Statistics</h1>
+        <h4>The current situation of the Covid-19 pandemic in the world.</h4>
+        <img src="/covid.png" alt="covid" class="avatar"><br></br>
+    </div>
+</div>
+
+<div class="container">
+    <h1>Covid-19 Statistics</h1>
+    <div class="ranking">
+        <table id="rank-table" class="ranking-table">
+            <thead>
+            <tr>
+                <th>Country</th>
+                <th>Total cases</th>
+                <th>Active cases</th>
+                <th>Cases PMC</th>
+                <th>Critical cases</th>
+                <th>Total deaths</th>
+                <th>Deaths PMC</th>
+                <th>Recovered</th>
+                <th>Total tests</th>
+                <th>Tests PMC</th>
+                <th>Cases today</th>
+                <th>Deaths today</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="data: ${covidData}">
+                <td th:text="${data.country}"></td>
+                <td th:text="${data.cases}"></td>
+                <td th:text="${data.active}"></td>
+                <td th:text="${data.casesPerOneMillion}"></td>
+                <td th:text="${data.critical}"></td>
+                <td th:text="${data.deaths}"></td>
+                <td th:text="${data.deathsPerOneMillion}"></td>
+                <td th:text="${data.recovered}"></td>
+                <td th:text="${data.totalTests}"></td>
+                <td th:text="${data.testsPerOneMillion}"></td>
+                <td th:text="${data.todayCases}"></td>
+                <td th:text="${data.todayDeaths}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="footer">
+    &#xA9 Krzysztof Gąciarz 2021
+</div>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>
